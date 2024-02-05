@@ -15,3 +15,5 @@
 ### APIs used:
 - [Random cards](https://www.deckofcardsapi.com/)
 - [Trivia](https://the-trivia-api.com/)
+- [Would you rather](https://api.truthordarebot.xyz/api/wyr)
+- [Never have i ever](https://api.truthordarebot.xyz/api/nhie)
