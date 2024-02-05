@@ -14,3 +14,4 @@
 
 ### APIs used:
 - [Random cards](https://www.deckofcardsapi.com/)
+- [Trivia](https://the-trivia-api.com/)
