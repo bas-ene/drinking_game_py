@@ -2,6 +2,7 @@ import random
 from deck_lib import Deck, Card
 from trivia_lib import Trivia
 from neverhaveiever_lib import NeverHaveIEver as Nhie
+from wouldyourather_lib import WouldYouRather as Wyr
 
 def handleCard(card: Card):
 
@@ -45,7 +46,9 @@ def handleCard(card: Card):
                 print('You\'ve won!')
 
         case 'HEARTS':
-            print('You won a heart!')
+            print(wyr.serve_wyr())
+            
+            print('Everyone has to answer, the minority loses!')
 
         case 'SPADES':
             print('You won a spade!')
@@ -57,9 +60,10 @@ if __name__ == '__main__':
     deck = Deck()
     trivia = Trivia()
     nhie = Nhie(r_rated=True)
+    wyr = Wyr(r_rated=True)
+
     while input('Draw a card? (y/n): ') == 'y':
         drawn = deck.draw(1)[0]
         print(f'You drew: {drawn}')
         
-        # handleCard(drawn)
-        handleCard(Card('DIAMONDS', '2'))
+        handleCard(drawn)
