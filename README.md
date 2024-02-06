@@ -17,3 +17,4 @@
 - [Trivia](https://the-trivia-api.com/)
 - [Would you rather](https://api.truthordarebot.xyz/api/wyr)
 - [Never have i ever](https://api.truthordarebot.xyz/api/nhie)
+- [Truth](https://api.truthordarebot.xyz/api/truth) or [Dare](https://api.truthordarebot.xyz/api/dare)
