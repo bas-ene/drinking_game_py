@@ -3,11 +3,11 @@ from deck_lib import Deck, Card
 from trivia_lib import Trivia
 from neverhaveiever_lib import NeverHaveIEver as Nhie
 from wouldyourather_lib import WouldYouRather as Wyr
-
+from truthrdare_lib import TruthOrDare as ToD
 def handleCard(card: Card):
 
     if card.value == 'JOKER':
-        print('You lostt!')
+        print('You lost!')
         return 
 
     match card.suit:
@@ -36,14 +36,16 @@ def handleCard(card: Card):
         case 'DIAMONDS':
             print(nhie.serve_nhie())
 
-            print('Have you ever done this? (y/n): ')
+            print('Have you ever done this? (y/n/r): ')
             user_answer = input()
-            while user_answer not in ['y', 'n']:
+            while user_answer not in ['y', 'n', 'r']:
                 user_answer = input('Invalid answer. Please enter y or n: ')
             if user_answer == 'y':
                 print('You\'ve lcst!')
-            else:
+            elif user_answer == 'n':
                 print('You\'ve won!')
+            else:
+                print('You\'ve refused to answer, so you lose!')
 
         case 'HEARTS':
             print(wyr.serve_wyr())
@@ -51,7 +53,18 @@ def handleCard(card: Card):
             print('Everyone has to answer, the minority loses!')
 
         case 'SPADES':
-            print('You won a spade!')
+            print('Truth or dare? (t[ruth]/d[are]): ')
+            user_answer = input()
+            while user_answer.lower() not in ['t', 'd', 'truth', 'dare']:
+                user_answer = input('Invalid answer. Please enter t, d, truth or dare: ')
+
+            user_answer = user_answer.lower()
+            if user_answer in ['t' , 'truth']:
+                print(tod.serve_truth())
+            else: 
+                print(tod.serve_dare())
+
+            print('You can refuse, but if you do so you lose!')
 
         case _: 
             raise Exception('Invalid suit')
@@ -61,6 +74,7 @@ if __name__ == '__main__':
     trivia = Trivia()
     nhie = Nhie(r_rated=True)
     wyr = Wyr(r_rated=True)
+    tod = ToD(r_rated=True)
 
     while input('Draw a card? (y/n): ') == 'y':
         drawn = deck.draw(1)[0]
