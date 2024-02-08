@@ -4,14 +4,15 @@ from trivia_lib import Trivia
 from neverhaveiever_lib import NeverHaveIEver as Nhie
 from wouldyourather_lib import WouldYouRather as Wyr
 from truthrdare_lib import TruthOrDare as ToD
-def handleCard(card: Card):
+
+def handleCard(card: Card) -> None:
 
     if card.value == 'JOKER':
         print('You lost!')
         return 
 
     match card.suit:
-        case 'CLUBS' :
+        case 'CLUBS':
             question = trivia.serve_question()
             print(f'Question: {question["question"]["text"]}')
             print('Options:')
@@ -76,8 +77,12 @@ if __name__ == '__main__':
     wyr = Wyr(r_rated=True)
     tod = ToD(r_rated=True)
 
-    while input('Draw a card? (y/n): ') == 'y':
+    while input('Draw a card? (Y/n): ').lower() in ['y', 'yes', '']:
+        print('=' * 20)
+
         drawn = deck.draw(1)[0]
         print(f'You drew: {drawn}')
         
         handleCard(drawn)
+
+        print('=' * 20 + '\n')
